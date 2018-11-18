@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+      
+      #map {
+        height: 100%;
+      }
+     
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+</head>
+<body>
+
+
+<p>Click button to get coordinates</p>
+
+<button onclick="getLocation()">Click me</button>
+
+<p id="demo"></p>
+
+	<script>
+		var x = document.getElementById("demo");
+		function getLocation(){
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(showPosition);
+			} else {
+				x.innerHTML = "Geolocation is not supported by this browser.";
+			}
+		}
+		function showPosition(position) {
+			x.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+			
+		}
+		function initMap() {
+			var chicago = {lat : position.coords.latitude, lng : position.coords.longitude };
+			var map = new google.maps.Map(
+				document.getElementById('map'), {zoom:4, center:chicago});
+		}
+	</script>
+
+	<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtTGPNpnhNwsa5Krb0OQxUJgz01tITS_4&callback=initMap">
+    </script>
+
+
+</body>
+</html>

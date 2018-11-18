@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Project 3</title>
+
+    
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet">
+
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet" type="text/css" />
+
+	<script src = "https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <style>body{margin: 0px}
+      #template {display:none;}
+    }
+    </style>
+
+  </head>
+
+  <body>
+
+ <aside class="mdc-drawer mdc-drawer--modal">
+    <div class="mdc-drawer__content">
+      <nav class="mdc-list">
+        <a class="mdc-list-item mdc-list-item--activated" href="#" aria-selected="true" data-lib="Library.html">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">book</i>
+          <span class="mdc-list-item__text">Library</span>
+        </a>
+        <a class="mdc-list-item" href="#" data-lib = "Map_demo.html">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">map</i>
+          <span class="mdc-list-item__text">Map</span>
+        </a>
+        <a class="mdc-list-item" href="#" data-lib = "Mapit.html">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">database</i>
+          <span class="mdc-list-item__text">Get coordinates</span>
+        </a>
+      </nav>
+    </div>
+  </aside>
+
+  <div class="mdc-drawer-scrim"></div>
+
+   <div class="mdc-drawer-app-content">
+    <header class="mdc-top-app-bar app-bar" id="app-bar">
+      <div class="mdc-top-app-bar__row">
+        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+          <a href="#" class="demo-menu material-icons mdc-top-app-bar__navigation-icon">menu</a>
+          <span class="mdc-top-app-bar__title">Project 3</span>
+        </section>
+      </div>
+    </header>
+
+    <main class="main-content" id="main-content">
+      <div class="mdc-top-app-bar--fixed-adjust">
+        <h1>Welcome to Project 3</h1>
+      </div>
+    </main>
+  </div>
+
+
+	<script>
+		const drawer = mdc.drawer.MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
+		const topAppBar = mdc.topAppBar.MDCTopAppBar.attachTo(document.getElementById('app-bar'));
+		
+		topAppBar.listen('MDCTopAppBar:nav', () => {
+		drawer.open = !drawer.open;
+		});
+		$(".mdc-list-item").on("click",function(e){
+			drawer.open = false;
+			$(".mdc-top-app-bar--fixed-adjust").load($(this).attr("data-lib"));
+		});
+	</script>
+
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #map {
+        height: 400px;  
+        width: 100%;  
+       }
+    </style>
+  </head>
+  <body>
+   
+    <div id="map"></div>
+    <script>
+function initMap() {
+  
+  var chicago = {lat: 41.8549291, lng: -87.6590452};
+ 
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 13, center: chicago});
+ 
+  var marker = new google.maps.Marker({position: chicago, map: map});
+}
+    </script>
+
+      
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtTGPNpnhNwsa5Krb0OQxUJgz01tITS_4&callback=initMap">
+    </script>
+  </body>
+</html>

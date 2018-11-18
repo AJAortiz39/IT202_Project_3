@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">.template{display:none;}</style>
+	<title></title>
+</head>
+<body>
+  <li class="mdc-list-item template">
+    <span class="mdc-list-item__text">Single-line item</span>
+    <span class="mdc-list-item__meta">
+    	<button data-mdc-auto-init="MDCIconButtonToggle" id="add-to-favorites"
+   class="mdc-icon-button"
+   aria-label="Add to favorites"
+   aria-hidden="true"
+   aria-pressed="false">
+   <i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on">favorite</i>
+   <i class="material-icons mdc-icon-button__icon">favorite_border</i>
+	</button>
+
+    </span>
+  </li>
+
+ <ul class="mdc-list" aria-orientation="vertical" id="hh">
+</ul>
+<div class = "template"></div>
+<script type="text/javascript">
+	
+	$.get("https://data.cityofchicago.org/resource/psqp-6rmg.json", function(data){
+		//console.log(data);
+		$.each(data, function(k,v){
+			var clone = $(".template").clone();
+			clone.removeClass("template");
+			clone.attr("id", k);
+			clone.find(".mdc-list-item__text").text(v.name_);
+			
+			$("#hh").append(clone);
+		});
+	}).always(function(){
+		window.mdc.autoInit();
+	});
+</script>
+
+
+</body>
+</html>
